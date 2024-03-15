@@ -6,4 +6,6 @@ import app.Entity.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
+	/*public List<Cliente> findByIdade(String idade);*/
+	
 }

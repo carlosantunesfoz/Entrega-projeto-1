@@ -52,7 +52,7 @@ public class VendaController {
 	public ResponseEntity<List<Venda>> listAll(){
 		try {
 			List<Venda> lista = this.vendaService.listAll();
-			return new ResponseEntity<>(lista, HttpStatus.OK);
+			return new ResponseEntity<List<Venda>>(lista, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}

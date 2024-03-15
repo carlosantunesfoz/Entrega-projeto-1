@@ -2,11 +2,14 @@ package app.Entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,12 +25,15 @@ public class Funcionario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotNull(message = "Não pode estar vazio")
 	private String nome;
+	@NotNull(message = "Não pode estar vazio")
 	private Integer idade;
+	@NotNull(message = "Não pode estar vazio")
 	private Integer matricula;
 	
 	@OneToMany(mappedBy = "funcionario")
-	/*@JoinColumn(name = "funcionario_id")*/
+	@JsonIgnoreProperties("funcionario")
 	private List<Venda> venda;
 	
 }

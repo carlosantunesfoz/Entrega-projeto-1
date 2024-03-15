@@ -9,10 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,20 +28,19 @@ public class Venda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String endereço;
+	private String endereco;
+	@NotNull(message = "Não pode estar vazio")
 	private Integer valorTotal;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	/*@JoinColumn(name = "cliente_id")
-	@JsonIgnoreProperties("venda")*/
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("venda")
 	private Cliente cliente;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("venda")
-	@JoinColumn(name = "funcionario_id")
 	private Funcionario funcionario;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "venda_produto")
 	private List<Produto> produto;
 }

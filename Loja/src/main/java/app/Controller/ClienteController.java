@@ -51,7 +51,7 @@ public class ClienteController {
 	public ResponseEntity<List<Cliente>> listAll(){
 		try {
 			List<Cliente> lista = this.clienteService.listAll();
-			return new ResponseEntity<>(lista, HttpStatus.CREATED);
+			return new ResponseEntity<List<Cliente>>(lista, HttpStatus.OK);
 			
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

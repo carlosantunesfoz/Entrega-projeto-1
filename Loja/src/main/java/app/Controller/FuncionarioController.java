@@ -58,7 +58,7 @@ public class FuncionarioController {
 		}
 	}
 	
-	@GetMapping("/findById/{}")
+	@GetMapping("/findById/{id}")
 	public ResponseEntity<Funcionario> findById(@PathVariable long id) {
 		try {
 			Funcionario funcionario = this.funcionarioService.findById(id);
