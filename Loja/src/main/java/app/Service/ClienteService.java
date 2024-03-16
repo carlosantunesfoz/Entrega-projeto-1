@@ -42,9 +42,9 @@ public class ClienteService {
 		return cliente;
 	}
 	
-	public List<Cliente>findByIdademaior(int idade) {
+	/*public List<Cliente>findByIdademaior(int idade) {
 		return this.clienteRepository.findByIdademaior(idade);
-	}
+	}*/
 	
 	public Cliente findByNome(String nome) {
 		var cliente = this.clienteRepository.findByNome(nome);

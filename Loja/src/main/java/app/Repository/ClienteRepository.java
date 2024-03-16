@@ -14,6 +14,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	public Cliente findByNome(String nome);
 
 	
-	@Query("FROM Cliente c WHERE c.idade < :idade")
-	public List<Cliente> findByIdademaior(int idade);
+	/*@Query("FROM Cliente c WHERE c.idade < :idade")
+	public List<Cliente> findByIdademaior(int idade);*/
 }

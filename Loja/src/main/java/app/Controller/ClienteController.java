@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.Entity.Cliente;
@@ -72,8 +71,8 @@ public class ClienteController {
 		}
 	}
 
-	@GetMapping("/findByIdade/{telefone}")
-	public ResponseEntity<Cliente> findByIdade(@RequestParam int telefone){
+	@GetMapping("/findByTelefone/{telefone}")
+	public ResponseEntity<Cliente> findByTelefone(@PathVariable int telefone){
 		try {
 			Cliente cliente = this.clienteService.findByTelefone(telefone);
 			return new ResponseEntity<>(cliente, HttpStatus.OK);
@@ -84,7 +83,7 @@ public class ClienteController {
 	}
 	
 	@GetMapping("/findByNome/{nome}")
-	public ResponseEntity<Cliente> findByNome(@RequestParam String nome){
+	public ResponseEntity<Cliente> findByNome(@PathVariable String nome){
 		try {
 			Cliente cliente = this.clienteService.findByNome(nome);
 			return new ResponseEntity<>(cliente, HttpStatus.OK);
@@ -95,7 +94,7 @@ public class ClienteController {
 		
 	}
 	
-	@GetMapping("/findByIdademaior/{idade}")
+	/*@GetMapping("/findByIdademaior/{idade}")
 	public ResponseEntity<List<Cliente>> findByIdadeMaior (@RequestParam int idade){
 		try {
 			List<Cliente> lista = this.clienteService.findByIdademaior(idade);
@@ -104,7 +103,7 @@ public class ClienteController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
-	}
+	}*/
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id) {
