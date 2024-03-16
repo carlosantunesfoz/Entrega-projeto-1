@@ -94,8 +94,8 @@ public class ClienteController {
 		
 	}
 	
-	/*@GetMapping("/findByIdademaior/{idade}")
-	public ResponseEntity<List<Cliente>> findByIdadeMaior (@RequestParam int idade){
+	@GetMapping("/findByIdademaior/{idade}")
+	public ResponseEntity<List<Cliente>> findByIdadeMaior (@PathVariable int idade){
 		try {
 			List<Cliente> lista = this.clienteService.findByIdademaior(idade);
 			return new ResponseEntity<>(lista, HttpStatus.OK);
@@ -103,7 +103,7 @@ public class ClienteController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
 		}
-	}*/
+	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id) {
