@@ -69,7 +69,55 @@ public class FuncionarioController {
 		}
 		
 	}
+	
+	@GetMapping("/findByNome/{nome}")
+	public ResponseEntity<List<Funcionario>> findByNome (@PathVariable String nome){
 		
+		try {
+			
+			List<Funcionario> lista = this.funcionarioService.findByNome(nome);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByIdade/{idade}")
+	public ResponseEntity<List<Funcionario>> findByIdade (@PathVariable Integer idade){
+		
+		try {
+			
+			List<Funcionario> lista = this.funcionarioService.findByIdade(idade);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+
+	@GetMapping("/findByMatriculamenor/{matricula}")
+	public ResponseEntity<List<Funcionario>> buscarCarrosAcimaAno (@PathVariable int matricula){
+		
+		try {
+			
+			List<Funcionario> lista = this.funcionarioService.findByMatriculamenor(matricula);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
 		@DeleteMapping("/delete/{id}")
 		public ResponseEntity<String> delete(@PathVariable long id){
 			try {

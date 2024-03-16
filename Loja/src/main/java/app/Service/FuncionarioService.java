@@ -34,6 +34,20 @@ public class FuncionarioService {
 		return funcionario;
 	}
 	
+	public List<Funcionario> findByNome(String nome){
+		var funcionario = this.funcionarioRepository.findByNome(nome);
+		return funcionario;
+	}
+	
+	public List<Funcionario> findByIdade(Integer idade){
+		var funcionario = this.funcionarioRepository.findByIdade(idade);
+		return funcionario;
+	}
+	
+	public List<Funcionario> findByMatriculamenor(int matricula){
+		return this.funcionarioRepository.findByMatriculamenor(matricula);
+	}
+	
 	public String delete (long id) {
 		this.funcionarioRepository.deleteById(id);
 		return "demitido com sucesso";
