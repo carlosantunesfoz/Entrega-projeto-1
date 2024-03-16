@@ -33,6 +33,20 @@ public class VendaService {
 		return venda;
 	}
 	
+	public List<Venda> findByEndereco(String endereco){
+		var venda =  this.vendaRepository.findByEndereco(endereco);
+		return venda;
+	}
+	
+	public List<Venda> findByValortotal(Integer valor){
+		var venda =  this.vendaRepository.findByValortotal(valor);
+		return venda;
+	}
+	
+	public List<Venda> findByVendaalta(Integer valor){
+		return this.vendaRepository.findByVendaalta(valor);
+	}
+	
 	public String delete(long id) {
 		this.vendaRepository.deleteById(id);
 		return "cancelamos a venda com sucesso";

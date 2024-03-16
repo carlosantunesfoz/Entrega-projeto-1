@@ -70,6 +70,54 @@ public class ProdutoController {
 		}
 	}
 	
+	@GetMapping("/findByNome/{nome}")
+	public ResponseEntity<List<Produto>> findByNome (@PathVariable String nome){
+		
+		try {
+			
+			List<Produto> lista = this.produtoService.findByNome(nome);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByValor/{valor}")
+	public ResponseEntity<List<Produto>> findByValor (@PathVariable Integer valor){
+		
+		try {
+			
+			List<Produto> lista = this.produtoService.findByValor(valor);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByProdutocaro/{valor}")
+	public ResponseEntity<List<Produto>> findByProdutocaro (@PathVariable int valor){
+		
+		try {
+			
+			List<Produto> lista = this.produtoService.findByProdutocaro(valor);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+	}
+		
+	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {

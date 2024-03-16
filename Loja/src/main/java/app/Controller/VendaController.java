@@ -69,6 +69,53 @@ public class VendaController {
 		}
 	}
 	
+	@GetMapping("/findByEndereco/{endereco}")
+	public ResponseEntity<List<Venda>> findByEndereco (@PathVariable String endereco){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByEndereco(endereco);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByValor/{valor}")
+	public ResponseEntity<List<Venda>> findByValortotal (@PathVariable Integer valor){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByValortotal(valor);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+		
+	}
+	
+	@GetMapping("/findByVendaalta/{valor}")
+	public ResponseEntity<List<Venda>> findByVendaalta (@PathVariable Integer valor){
+		
+		try {
+			
+			List<Venda> lista = this.vendaService.findByVendaalta(valor);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+
+		}
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id){
 		try {

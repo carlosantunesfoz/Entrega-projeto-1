@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import app.Entity.Funcionario;
 import app.Entity.Produto;
 import app.Repository.ProdutoRepository;
 
@@ -32,6 +33,20 @@ public class ProdutoService {
 	public Produto findById(Long id) {
 		var produto = this.produtoRepository.findById(id).get();
 		return produto;
+	}
+	
+	public List<Produto> findByNome(String nome){
+		var produto =  this.produtoRepository.findByNome(nome);
+		return produto;
+	}
+	
+	public List<Produto> findByValor(Integer valor){
+		var produto =  this.produtoRepository.findByValor(valor);
+		return produto;
+	}
+	
+	public List<Produto> findByProdutocaro(int valor){
+		return this.produtoRepository.findByProdutocaro(valor);
 	}
 	
 	public String delete(Long id) {
