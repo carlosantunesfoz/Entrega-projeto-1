@@ -37,9 +37,22 @@ public class ClienteService {
 		return cliente;
 	}
 	
-	public String delete(Long id) {
-		
-	this.clienteRepository.deleteById(id);
-	return "cliente removido do sismtema";
+	public Cliente findByTelefone(int telefone) {
+		var cliente = this.clienteRepository.findByTelefone(telefone);
+		return cliente;
+	}
+	
+	public List<Cliente>findByIdademaior(int idade) {
+		return this.clienteRepository.findByIdademaior(idade);
+	}
+	
+	public Cliente findByNome(String nome) {
+		var cliente = this.clienteRepository.findByNome(nome);
+		return cliente;
+	}
+	
+	public String delete(Long id) {		
+		this.clienteRepository.deleteById(id);
+		return "cliente removido do sismtema";
 	}
 }

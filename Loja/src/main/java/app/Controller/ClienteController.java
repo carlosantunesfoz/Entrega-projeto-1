@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.Entity.Cliente;
@@ -23,6 +24,8 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> save(@RequestBody Cliente cliente){
@@ -58,7 +61,7 @@ public class ClienteController {
 		}
 	}
 	
-	@GetMapping("findById/{id}")
+	@GetMapping("/findById/{id}")
 	public ResponseEntity<Cliente> findById(@PathVariable long id){
 		
 		try {
@@ -69,6 +72,39 @@ public class ClienteController {
 		}
 	}
 
+	@GetMapping("/findByIdade/{telefone}")
+	public ResponseEntity<Cliente> findByIdade(@RequestParam int telefone){
+		try {
+			Cliente cliente = this.clienteService.findByTelefone(telefone);
+			return new ResponseEntity<>(cliente, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@GetMapping("/findByNome/{nome}")
+	public ResponseEntity<Cliente> findByNome(@RequestParam String nome){
+		try {
+			Cliente cliente = this.clienteService.findByNome(nome);
+			return new ResponseEntity<>(cliente, HttpStatus.OK);
+		
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+		
+	}
+	
+	@GetMapping("/findByIdademaior/{idade}")
+	public ResponseEntity<List<Cliente>> findByIdadeMaior (@RequestParam int idade){
+		try {
+			List<Cliente> lista = this.clienteService.findByIdademaior(idade);
+			return new ResponseEntity<>(lista, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable long id) {
